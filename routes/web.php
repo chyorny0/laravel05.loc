@@ -26,17 +26,15 @@ Route::get('/', function () {
 Auth::routes();
 
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::prefix('admin')->group(function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('', [MyController::class, 'index'])->name('');
+    Route::get('/', [MyController::class, 'index'])->name('');
 
     Route::resource('categories', CategoryController::class)->except(['show']);
 });
-
 
 
 
