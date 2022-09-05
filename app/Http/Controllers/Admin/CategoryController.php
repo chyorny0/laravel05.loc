@@ -63,9 +63,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-//        $category = Category::find($category);
         return view('admin.categories.edit', compact('category'));
-
     }
 
     /**

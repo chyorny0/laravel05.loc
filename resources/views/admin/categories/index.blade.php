@@ -36,7 +36,6 @@
             <!-- column -->
             <div class="col-12">
                 <div class="card">
-
                     <div class="table-responsive">
                         <a href="{{route('categories.create')}}" class="btn btn-success">Create new</a>
                         <table class="table v-middle">

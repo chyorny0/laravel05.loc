@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->int('category_id');
             $table->string('image');
-            $table->float('price');
+            $table->int('price');
             $table->boolean('active');
             $table->timestamps();
         });
