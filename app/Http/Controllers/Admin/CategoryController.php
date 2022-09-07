@@ -38,6 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:20'
+        ]);
+//        dd($validated);
         $category = new Category();
         $category->fill($request->all());
         $category->save();

@@ -44,6 +44,7 @@
                     <div class="card">
                         <div class="card-body">
                             <form class="form-horizontal form-material mx-2" method="post" action="{{route('categories.store')}}">
+
                                 @csrf
                                 <div class="form-group">
                                     <label class="col-md-12">Name</label>
@@ -51,6 +52,11 @@
                                         <input name="name" type="text"
                                                class="form-control form-control-line">
                                     </div>
+                                    @if($errors->has('name'))
+                                        @foreach($errors->get('name') as $error)
+                                            {{$error}}
+                                        @endforeach
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
