@@ -10,4 +10,7 @@ class NewController extends Controller
     public function aa(){
 
     }
+    public function bb(){
+
+    }
 }
