@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 /*
@@ -29,11 +30,15 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->group(callback: function(){
 
     Route::get('/', [MyController::class, 'index'])->name('');
 
-    Route::resource('categories', CategoryController::class)->except(['show']);
+//    Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::resources([
+        'categories' => CategoryController::class,
+        'products' => ProductController::class,
+    ]);
 });
 
 

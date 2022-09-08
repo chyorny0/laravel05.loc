@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -36,15 +37,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:3|max:20'
-        ]);
-//        dd($validated);
-        $category = new Category();
-        $category->fill($request->all());
-        $category->save();
+//        $category = new Category();
+//        $category->fill($request->all());
+//        $category->save();
+        Category::create($request->all());
         return redirect(route('categories.index'));
     }
 
