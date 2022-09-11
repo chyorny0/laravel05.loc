@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ArticleController;
 
 
 /*
@@ -38,6 +39,7 @@ Route::prefix('admin')->group(callback: function(){
     Route::resources([
         'categories' => CategoryController::class,
         'products' => ProductController::class,
+        'articles' => ArticleController::class,
     ]);
 });
 
