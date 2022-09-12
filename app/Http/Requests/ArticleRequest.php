@@ -45,7 +45,7 @@ class ArticleRequest extends FormRequest
             'image.mimes' => 'Файл имеет неверный формат данных!',
             'image.size' => 'Вы отправляете файл больше, чем :size килобайт!',
             'image.file' => 'Ваш файл не отправлен!',
-            'image.active' => 'Поле не выбрано!',
+            'active.accepted' => 'Поле не выбрано!',
         ];
     }
 }
