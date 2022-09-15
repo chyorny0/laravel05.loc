@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ArticleController;
+use Illuminate\Support\Facades\Storage;
 
 
 /*
@@ -19,11 +20,14 @@ use App\Http\Controllers\Admin\ArticleController;
 |
 */
 
-Route::get('/', function () {
-    $category = \App\Models\Category::find(1);
-    dump($category);
+Route::any('/', function () {
+
     return view('welcome');
-});
+})->middleware(\App\Http\Middleware\MyMiddleware::class);
+
+//Route::get('/any_file', function (){
+//    return \Illuminate\Support\Facades\Storage::download('aaa.txt');
+//});
 
 Auth::routes();
 
@@ -31,11 +35,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('admin')->group(callback: function(){
+Route::middleware('auth')->prefix('admin')->group(callback: function(){
 
-    Route::get('/', [MyController::class, 'index'])->name('');
+    Route::get('/', [MyController::class, 'index'])->name('')->withoutMiddleware('auth');
 
-//    Route::resource('categories', CategoryController::class)->except(['show']);
     Route::resources([
         'categories' => CategoryController::class,
         'products' => ProductController::class,
