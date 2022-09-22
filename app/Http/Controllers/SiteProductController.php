@@ -1,28 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateProductRequest;
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use PhpParser\Builder;
 
-class ProductController extends Controller
+class SiteProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     *
      */
-
     public function index()
     {
-        $products = Product::paginate(5);
-        return view('admin.products.index', compact('products'));
+        //
     }
 
     /**
@@ -32,8 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        //
     }
 
     /**
@@ -42,15 +33,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateProductRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        if ($request->hasFile('image')){ // Проверка, пришло ли нам какое-либо изображение
-            $file = $request->file('image'); // Считываваем/получаем файл
-            $name = $request->file('image')->getClientOriginalName(); // Получаем оригинальное имя файла
-            $data['image'] = Storage::putFileAs('images', $file,  $name); // Даем путь к этому файлу
-        }
-        Product::create($data);
+        //
     }
 
     /**
@@ -61,7 +46,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
+        //
     }
 
     /**

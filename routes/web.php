@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
@@ -20,14 +21,7 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::any('/', function () {
-
-    return view('welcome');
-})->middleware(\App\Http\Middleware\MyMiddleware::class);
-
-//Route::get('/any_file', function (){
-//    return \Illuminate\Support\Facades\Storage::download('aaa.txt');
-//});
+Route::get('/', SiteController::class);
 
 Auth::routes();
 
