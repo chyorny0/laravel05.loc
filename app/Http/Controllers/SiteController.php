@@ -22,5 +22,12 @@ class SiteController extends Controller
 
     }
 
-
+    public function store(){
+        $products = Product::query()
+            ->where('active', 1)
+            ->limit(20)
+            ->latest()
+            ->get();
+        return view('site.store', compact('products'));
+    }
 }
