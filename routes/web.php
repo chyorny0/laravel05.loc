@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\SiteProductController;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -20,8 +21,16 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('/')->group(function(){
+    Route::get('/', SiteController::class);
+    Route::get('/store', [SiteController::class, 'store']);
 
-Route::get('/', SiteController::class);
+//    Route::resources([
+//        'store'=>SiteProductController::class,
+//    ]);
+});
+
+
 
 Auth::routes();
 

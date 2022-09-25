@@ -15,10 +15,19 @@ class SiteController extends Controller
             ->limit(10)
             ->latest()
             ->get();
-        $collection = collect([1,2,3]);
-        $collection[] = 11;
-        dump($collection);
+//        $collection = collect([1,2,3]);
+//        $collection[] = 11;
+//        dump($collection);
         return view('site.index', compact('latestProducts'));
 
+    }
+
+    public function store(){
+        $products = Product::query()
+            ->where('active', 1)
+            ->limit(20)
+            ->latest()
+            ->get();
+        return view('site.store', compact('products'));
     }
 }
