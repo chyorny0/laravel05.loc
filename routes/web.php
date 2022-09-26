@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Storage;
 */
 Route::prefix('/')->group(function(){
     Route::get('/', SiteController::class);
-    Route::get('/store', [SiteController::class, 'store']);
 });
 
 
