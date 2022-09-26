@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,18 @@ class SiteController extends Controller
 
     }
 
+    public function store(){
+        $categories = Category::all();
+        $categories = $categories->keyBy("id");
+//        $products = Product::paginate(9);
+        $products = Product::query()
+            ->orderBy("price")
+            ->get();
+        // сделал запрос сразу с сортировкой по цене (возростание)
+        //для того, чтобы в асайде в разделе TOP SELLING вывести первый подмассив просто
+
+        $products = $products->chunk(3);
+        return view("site.store", compact("products","categories"));
+    }
 
 }
