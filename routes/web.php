@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SiteController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
@@ -20,12 +23,18 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::prefix('/')->group(function(){
-    Route::get('/', SiteController::class);
-    Route::get('/store', [SiteController::class, 'store']);
+
+Route::get('/', SiteController::class);
+Route::get('/store', [SiteController::class, 'store']);
+Route::get("/cart", [CartController::class,"getCart"]);
+Route::get("/add_to_cart", [CartController::class,"addToCart"]);
+
+
+Route::get("/test", function (){
+//   $category = Category::inRandomOrder()->first();
+    $category = Category::find(17);
+   dd($category->products()->where("active", 1)->get());
 });
-
-
 
 Auth::routes();
 
