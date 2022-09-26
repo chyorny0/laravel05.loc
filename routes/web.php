@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SiteController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ArticleController;
-use App\Http\Controllers\SiteProductController;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -22,8 +24,17 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+Route::get('/', SiteController::class);
+Route::get('/store', [SiteController::class, 'store']);
+Route::get("/cart", [CartController::class,"getCart"]);
+Route::get("/add_to_cart", [CartController::class,"addToCart"]);
 
 
+Route::get("/test", function (){
+//   $category = Category::inRandomOrder()->first();
+    $category = Category::find(17);
+   dd($category->products()->where("active", 1)->get());
+});
 
 Auth::routes();
 
@@ -41,6 +52,3 @@ Route::middleware('auth')->prefix('admin')->group(callback: function(){
         'articles' => ArticleController::class,
     ]);
 });
-
-
-

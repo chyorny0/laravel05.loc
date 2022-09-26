@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,13 @@ class SiteController extends Controller
 
     }
 
+    public function store(Request $request){
+        $categories = Category::withCount("products")->get();
+        $products = Product::
+            orderBy("price")
+            ->with("category")
+            ->get();
+        return view("site.store", compact("products","categories"));
+    }
 
 }

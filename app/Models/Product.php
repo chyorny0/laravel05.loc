@@ -36,4 +36,12 @@ class Product extends Model
         return 'https://get.wallhere.com/photo/sunlight-landscape-hill-nature-grass-sky-field-clouds-green-morning-farm-horizon-pathway-plateau-cloud-tree-flower-grassland-plant-pasture-agriculture-meadow-plantation-plain-lawn-prairie-crop-rural-area-grass-family-paddy-field-246058.jpg';
     }
 
+    public function setImageAttributes($value){
+        $this->attributes["image"] = Str::lower($value);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
 }
