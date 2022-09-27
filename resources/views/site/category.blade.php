@@ -1,7 +1,6 @@
 @extends("layouts.site")
 
 @section("content")
-
     <!-- BREADCRUMB -->
     <div id="breadcrumb" class="section">
         <!-- container -->
@@ -31,26 +30,6 @@
             <div class="row">
                 <!-- ASIDE -->
                 <div id="aside" class="col-md-3">
-                    <!-- aside Widget -->
-                    <div class="aside">
-                        <h3 class="aside-title">Categories</h3>
-                        <div class="checkbox-filter">
-
-                            @foreach($categories as $category)
-                                <div class="input-checkbox">
-                                    <input type="checkbox" id="category-{{ $category->id }}">
-                                    <label for="category-{{ $category->id }}">
-                                        <span></span>
-                                        <p class="product-name"><a href="{{route('site.product',
-                                                   ["category_id"=>$category->id])}}">{{ $category->name }}</a></p>
-                                        <small>({{ $category->products_count}})</small>
-                                    </label>
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-                    <!-- /aside Widget -->
 
                     <!-- aside Widget -->
                     <div class="aside">
@@ -127,25 +106,6 @@
                         </div>
                     </div>
                     <!-- /aside Widget -->
-
-                    <!-- aside Widget -->
-                    <div class="aside">
-                        <h3 class="aside-title">Top selling</h3>
-                        @foreach($products->chunk(3)[0] as $product)
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{ $product->image }}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">{{ $product->category->name }}</p>
-                                    <h3 class="product-name"><a href="{{route('site.product',
-                                                   ["category_id"=>$product->category->id,"product_id"=>$product->id])}}">{{ $product->name }}</a></h3>
-                                    <h4 class="product-price">${{ $product->price/100 }}</h4>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <!-- /aside Widget -->
                 </div>
                 <!-- /ASIDE -->
 
@@ -179,7 +139,7 @@
 
                     <!-- store products -->
                     <div class="row">
-                    @foreach($products->chunk(3) as $product_row)
+                    @foreach($category->products->chunk(3) as $product_row)
                         @foreach($product_row as $product)
                             <!-- product -->
                                 <div class="col-md-4 col-xs-6">
