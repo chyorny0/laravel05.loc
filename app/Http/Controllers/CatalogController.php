@@ -24,13 +24,11 @@ class CatalogController extends Controller
     }
 
     public function product($category_id, $product_id){
-        if($product_id) {
             $product = Product::
             where('category_id', $category_id)
             ->where('id', $product_id)
             ->firstOrFail();
             return view("site.product", compact("product"));
-        }
     }
 
 }

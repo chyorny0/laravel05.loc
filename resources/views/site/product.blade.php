@@ -87,7 +87,7 @@
                                 <a class="review-link" href="#">10 Review(s) | Add your review</a>
                             </div>
                             <div><h3 class="product-price">${{ $product->price/100 }}</h3><span class="product-available">In Stock</span></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>{{ $product->description }}</p>
 
                             <div class="product-options">
                                 <label>
@@ -155,7 +155,7 @@
                                 <div id="tab1" class="tab-pane fade in active">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            <p>{{ $product->description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                                 <div id="tab2" class="tab-pane fade in">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            <p>{{ $product->description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                            <p>{{ $product->description }}</p>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -291,7 +291,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                            <p>{{ $product->description }}</p>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -307,7 +307,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                            <p>{{ $product->description }}</p>
                                                         </div>
                                                     </li>
                                                 </ul>
