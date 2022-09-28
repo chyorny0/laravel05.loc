@@ -41,7 +41,7 @@
                                     <input type="checkbox" id="category-{{ $category->id }}">
                                     <label for="category-{{ $category->id }}">
                                         <span></span>
-                                        <p class="product-name"><a href="{{route('site.product',
+                                        <p class="product-name"><a href="{{route('site.catalog',
                                                    ["category_id"=>$category->id])}}">{{ $category->name }}</a></p>
                                         <small>({{ $category->products_count}})</small>
                                     </label>

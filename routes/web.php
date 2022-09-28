@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use App\Models\Product;
@@ -25,10 +26,10 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::get('/', SiteController::class);
-Route::get('/store', [SiteController::class, 'store']);
+Route::get('/catalog/{category_id?}', [CatalogController::class, 'catalog'])->name("site.catalog");
 Route::get("/cart", [CartController::class,"getCart"]);
 Route::get("/add_to_cart", [CartController::class,"addToCart"]);
-Route::get("store/{category_id}/{product_id?}",[SiteController::class,"product"])->name("site.product");
+Route::get("catalog/{category_id}/{product_id}",[CatalogController::class,"product"])->name("site.product");
 
 Route::get("/test", function (){
 //   $category = Category::inRandomOrder()->first();
