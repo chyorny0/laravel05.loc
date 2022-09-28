@@ -39,7 +39,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-//        $category = new Category();
+//        $category = new UserController();
 //        $category->fill($request->all());
 //        $category->save();
         Category::create($request->all());
