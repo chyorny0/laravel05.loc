@@ -27,9 +27,9 @@ use Illuminate\Support\Facades\Storage;
 
 Route::get('/', SiteController::class);
 Route::get('/catalog/{category_id?}', [CatalogController::class, 'catalog'])->name("site.catalog");
-Route::get("/cart", [CartController::class,"getCart"]);
-Route::get("/add_to_cart", [CartController::class,"addToCart"]);
 Route::get("catalog/{category_id}/{product_id}",[CatalogController::class,"product"])->name("site.product");
+Route::get("/cart", [CartController::class,"getCart"])->name("cart");
+Route::post("/add_to_cart", [CartController::class,"addToCart"])->name("addToCart");
 
 Route::get("/test", function (){
 //   $category = Category::inRandomOrder()->first();
