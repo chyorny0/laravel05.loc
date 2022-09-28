@@ -30,8 +30,6 @@ class CatalogController extends Controller
             ->where('id', $product_id)
             ->firstOrFail();
             return view("site.product", compact("product"));
-        }else {
-
         }
     }
 
