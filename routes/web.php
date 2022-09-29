@@ -24,18 +24,12 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', SiteController::class);
 Route::get('/catalog/{category_id?}', [CatalogController::class, 'catalog'])->name("site.catalog");
 Route::get("catalog/{category_id}/{product_id}",[CatalogController::class,"product"])->name("site.product");
 Route::get("/cart", [CartController::class,"getCart"])->name("cart");
 Route::post("/add_to_cart", [CartController::class,"addToCart"])->name("addToCart");
 
-Route::get("/test", function (){
-//   $category = Category::inRandomOrder()->first();
-    $category = Category::find(17);
-   dd($category->products()->where("active", 1)->get());
-});
 
 Auth::routes();
 
