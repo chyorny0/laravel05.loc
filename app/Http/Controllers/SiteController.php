@@ -23,13 +23,4 @@ class SiteController extends Controller
 
     }
 
-    public function store(Request $request){
-        $categories = Category::withCount("products")->get();
-        $products = Product::
-            orderBy("price")
-            ->with("category")
-            ->get();
-        return view("site.store", compact("products","categories"));
-    }
-
 }
