@@ -26,8 +26,6 @@ use Illuminate\Support\Facades\Storage;
 
 Route::get('/', SiteController::class);
 
-
-
 Route::post("/test", function (\Illuminate\Http\Request $request){
     $data = $request->all();
     return response()->json($data)->setStatusCode(401);
