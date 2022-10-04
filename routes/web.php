@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MyController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -32,9 +34,27 @@ Route::post("/add_to_cart", [CartController::class,"addToCart"])->name("addToCar
 
 
 Route::get("/test", function (){
-//   $category = Category::inRandomOrder()->first();
-    $category = Category::find(17);
-   dd($category->products()->where("active", 1)->get());
+//    $query = [
+//        "ondate"=>"2016-7-1",
+//        "periodicity"=>"1"
+//    ];
+//    $client = new \GuzzleHttp\Client([
+//        "base_uri" => "https://www.nbrb.by/api/"
+//    ]);
+//    $response = $client->get(
+//        "exrates/rates/145",
+//        [
+//            "query"=>$query
+//        ]
+//    );
+//    $response = Http::
+//        withBasicAuth("login", "password")
+//        ->withToken("ffghtrescghytr","token_type")
+//        ->acceptJson()
+//        ->asJson()
+//        ->get("https://www.nbrb.by/api/exrates/rates/145",$query);
+//    dd($response->json());
+    return view("test.test");
 });
 
 Auth::routes();

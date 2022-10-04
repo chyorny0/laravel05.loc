@@ -17,11 +17,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return new CategoryCollection(Category::all());
+        return response()->json(new CategoryCollection(Category::paginate(10)));
     }
 
-    public function show(Category $category)
+    public function show($id)
     {
+        $category = Category::findOrFail($id);
         return new CategoryResource($category);
     }
 
@@ -33,7 +34,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        try{
+            $category = Category::create($request->all());
+        }catch (\Exception $exception){
+            return response()
+                ->json(["errors"=>$exception->getMessage()])
+                ->setStatusCode(500);
+        }
+        return response()
+            ->json($category)
+            ->setStatusCode(201);
     }
 
 

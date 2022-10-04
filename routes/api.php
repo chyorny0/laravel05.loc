@@ -24,4 +24,4 @@ Route::get("/users",[\App\Http\Controllers\Api\UserController::class,"index"]);
 Route::get("/users/{id}",[\App\Http\Controllers\Api\UserController::class,"show"]);
 
 
-Route::resource('category', CategoryController::class);
+Route::apiResource('category', CategoryController::class);
