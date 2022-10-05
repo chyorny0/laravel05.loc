@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ConverterController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use App\Models\Product;
@@ -31,9 +32,10 @@ Route::get('/catalog/{category_id?}', [CatalogController::class, 'catalog'])->na
 Route::get("catalog/{category_id}/{product_id}",[CatalogController::class,"product"])->name("site.product");
 Route::get("/cart", [CartController::class,"getCart"])->name("cart");
 Route::post("/add_to_cart", [CartController::class,"addToCart"])->name("addToCart");
+Route::get("/converter", [ConverterController::class,"getAllCurrencies"])->name("getAllCurrencies");
 
 
-Route::get("/test", function (){
+//Route::get("/test", function (){
 //    $query = [
 //        "ondate"=>"2016-7-1",
 //        "periodicity"=>"1"
@@ -51,11 +53,11 @@ Route::get("/test", function (){
 //        withBasicAuth("login", "password")
 //        ->withToken("ffghtrescghytr","token_type")
 //        ->acceptJson()
-//        ->asJson()
-//        ->get("https://www.nbrb.by/api/exrates/rates/145",$query);
-//    dd($response->json());
-    return view("test.test");
-});
+////        ->asJson()
+//        get("https://www.nbrb.by/api/exrates/rates/145",$query);
+//        dd($response->json());
+//
+//});
 
 Auth::routes();
 
