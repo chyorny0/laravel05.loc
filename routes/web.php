@@ -35,6 +35,11 @@ Route::get("/cart", [CartController::class,"getCart"])->name("cart");
 Route::post("/add_to_cart", [CartController::class,"addToCart"])->name("addToCart");
 Route::get("/converter", [ConverterController::class,"getAllCurrencies"])->name("getAllCurrencies");
 
+Route::prefix("/21")->group(function(){
+    Route::get("/",[DeckOfCardsController::class,"getCardDeck"]);
+    Route::get("/getCard/{id}/{n}",[DeckOfCardsController::class,"getCard"]);
+});
+
 
 //Route::get("/test", function (){
 //    $query = [
