@@ -28,28 +28,22 @@
     const cardImg = document.getElementById("cardImg")
     const scoreP = document.getElementById("score")
     let score = 0;
+    let cards = {
+        "0" : 10,
+        "J" : 2,
+        "Q" : 3,
+        "K" : 4,
+        "A" : 11
+    }
     moreBtn.addEventListener("click", ()=>{
         axios.get("/21/getCard/" + "{{ $id }}" + "/1").then(res=> {
             console.log(res.data.code)
             cardImg.setAttribute("src",res.data["images"]["png"]);
-            switch ((res.data.code).split("")[0]){
-                case "0":
-                    score += 10
-                    break
-                case "J":
-                    score += 2
-                    break
-                case "Q":
-                    score += 3
-                    break
-                case "K":
-                    score += 4
-                    break
-                case "A":
-                    score += 11;
-                    break
-                default:
-                    score += +(res.data.code).split("")[0];
+            let cardName = (res.data.code).split("")[0];
+            if(cards.hasOwnProperty(cardName)){
+                score += cards[cardName];
+            } else {
+                score += +cardName;
             }
             if((score) > 21){
                 scoreP.innerText = "Перебор";
