@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ConverterController;
+use App\Http\Controllers\DeckOfCardsController;
 use App\Http\Controllers\SiteController;
 use App\Models\Category;
 use App\Models\Product;
