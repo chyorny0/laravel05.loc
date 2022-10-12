@@ -16,9 +16,12 @@ class FirstMail extends Mailable
      *
      * @return void
      */
-    public function __construct($mailMessage)
+    public function __construct($mailMessage, $from = "exampleFrom@tut.by", $fromName = "exampleName", $to = "exampleTo@tut.by")
     {
         $this->mailMessage = $mailMessage;
+        $this->from = $from;
+        $this->fromName = $fromName;
+        $this->to = $to;
     }
 
     /**
@@ -28,14 +31,11 @@ class FirstMail extends Mailable
      */
     public function build()
     {
-        $this->from('adsdcf@tut.by', 'Artemi A.')
-            ->to('adcwcw@tut.by')
-            ->cc(['sdcsd@tut.by'])
+        $this->from($this->from, $this->fromName)
+            ->to($this->to)
             ->with([
-                'message2' => 'dsfsrrsf',
                 'mailMessage' => $this->mailMessage
             ])
             ->view('emails.first');
-//        return $this->view('view.name');
     }
 }

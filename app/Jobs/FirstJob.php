@@ -24,10 +24,13 @@ class FirstJob implements ShouldQueue
 
     public $emailMessage;
 
-    public function __construct($emailMessage)
+    public function __construct($emailMessage, $from = "exampleFrom@tut.by", $fromName = "exampleName", $to = "exampleTo@tut.by")
     {
         $this->queue = "my_emails";
         $this->emailMesssage = $emailMessage;
+        $this->from = $from;
+        $this->fromName = $fromName;
+        $this->to = $to;
     }
 
     /**
@@ -37,7 +40,10 @@ class FirstJob implements ShouldQueue
      */
     public function handle()
     {
-        $mail = new \App\Mail\FirstMail('gggggg');
+        $mail = new \App\Mail\FirstMail($this->emailMessage, $this->from, $this->fromName, $this->to);
         Mail::send($mail);
     }
 }
+
+
+
