@@ -41,29 +41,10 @@ Route::prefix("/21")->group(function(){
 });
 
 
-//Route::get("/test", function (){
-//    $query = [
-//        "ondate"=>"2016-7-1",
-//        "periodicity"=>"1"
-//    ];
-//    $client = new \GuzzleHttp\Client([
-//        "base_uri" => "https://www.nbrb.by/api/"
-//    ]);
-//    $response = $client->get(
-//        "exrates/rates/145",
-//        [
-//            "query"=>$query
-//        ]
-//    );
-//    $response = Http::
-//        withBasicAuth("login", "password")
-//        ->withToken("ffghtrescghytr","token_type")
-//        ->acceptJson()
-////        ->asJson()
-//        get("https://www.nbrb.by/api/exrates/rates/145",$query);
-//        dd($response->json());
-//
-//});
+Route::get("/test", function (){
+    \App\Jobs\FirstJob::dispatch("GG");
+    \App\Jobs\FirstJob::dispatch("GG")->onQueue("gg");
+});
 
 Auth::routes();
 
