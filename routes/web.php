@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ArticleController;
 use Illuminate\Support\Facades\Storage;
+use App\Helpers\CurrencyHelper;
 
 
 /*
@@ -42,8 +43,9 @@ Route::prefix("/21")->group(function(){
 
 
 Route::get("/test", function (){
-    \App\Jobs\FirstJob::dispatch("GG");
-    \App\Jobs\FirstJob::dispatch("GG")->onQueue("gg");
+//    \App\Jobs\FirstJob::dispatch("GG");
+//    \App\Jobs\FirstJob::dispatch("GG")->onQueue("gg");
+    dd(CurrencyHelper::saveAllRates());
 });
 
 Auth::routes();
